@@ -25,15 +25,25 @@ list(APPEND FILES ${stb_image})
 list(APPEND FILES ${glm})
 list(APPEND FILES ${glad})
 
-set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp)
+if (USE_GLFW)
+message(STATUS "Using glfw")
+list(APPEND LINK_LIBS glfw3)
+list(APPEND LINK_LIBS pthread)
+list(APPEND LINK_LIBS Xrandr)
+list(APPEND LINK_LIBS Xi)
+list(APPEND LINK_LIBS X11)
+list(APPEND LINK_LIBS Xcursor)
+endif ()
 
+# OSMesa libs
+list(APPEND LINK_LIBS OSMesa)
+list(APPEND LINK_LIBS dl)
+list(APPEND LINK_LIBS m)
+
+
+set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp)
 include_directories(${INCLUDE_DIRS})
 link_directories(${LINK_DIRS})
 add_executable(videoApp src/main.cpp ${FILES} ${forAdd})
 
-# glfw
-target_link_libraries(videoApp glfw3 pthread)
-target_link_libraries(videoApp glfw3 pthread Xrandr Xi X11 Xcursor)
-
-# Osmesa
-target_link_libraries(videoApp dl m OSMesa)
+target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})

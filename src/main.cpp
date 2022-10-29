@@ -1,7 +1,3 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include "export/OffscreenCtx.h"
 #include "export/Window.h"
 #include "effectTasks/TaskTriangle.h"
 

@@ -16,11 +16,13 @@ list(APPEND LINK_DIRS    Denpendiencies/GLFW)
 
 file(GLOB_RECURSE effectTask   src/effectTasks/*.cpp)
 file(GLOB_RECURSE export       src/export/*.cpp)
+file(GLOB_RECURSE glElement    src/glElement/*.cpp)
 file(GLOB_RECURSE stb_image    src/vendors/stb_image/*.cpp)
 file(GLOB_RECURSE glm          src/vendors/glm/*.cpp)
 file(GLOB_RECURSE glad         src/vendors/glad/*.c)
 list(APPEND FILES ${effectTask})
 list(APPEND FILES ${export})
+list(APPEND FILES ${glElement})
 list(APPEND FILES ${stb_image})
 list(APPEND FILES ${glm})
 list(APPEND FILES ${glad})
@@ -41,7 +43,8 @@ list(APPEND LINK_LIBS dl)
 list(APPEND LINK_LIBS m)
 
 
-set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp)
+set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp
+        ${glElement})
 include_directories(${INCLUDE_DIRS})
 link_directories(${LINK_DIRS})
 add_executable(videoApp src/main.cpp ${FILES} ${forAdd})

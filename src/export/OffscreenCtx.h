@@ -1,11 +1,12 @@
 #pragma once
 
 #include "effectTasks/Task.h"
+#include "Context.h"
 #include <GL/osmesa.h>
 
 
 
-class OffscreenCtx {
+class OffscreenCtx :public Context{
 
 private:
     int m_Width, m_Height, m_FrameNum;
@@ -13,11 +14,9 @@ private:
     GLubyte *osmesa_buffer;
 
 public:
-    OffscreenCtx(int width, int height, const char *name);
+    OffscreenCtx(int width, int height);
     ~OffscreenCtx();
 
-    void show(Task *&currentTask);
-
-
+    void show(Task *task) override;
 };
 

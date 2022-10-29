@@ -43,10 +43,9 @@ list(APPEND LINK_LIBS dl)
 list(APPEND LINK_LIBS m)
 
 
-set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp
-        ${glElement})
+set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp ${glElement} src/export/Context.h src/export/Context.h src/export/Context.h)
+
 include_directories(${INCLUDE_DIRS})
 link_directories(${LINK_DIRS})
 add_executable(videoApp src/main.cpp ${FILES} ${forAdd})
-
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})

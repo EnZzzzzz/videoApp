@@ -7,14 +7,15 @@
 
 int main()
 {
-//    OffscreenCtx ctx = OffscreenCtx(630, 360, "test");
-    auto ctx = Window(630, 360, "test");
+    int w = 630;
+    int h = 360;
+    auto ctx = Context::MakeWindow(w, h, "test");
 
     Task* task;
     TaskTriangle tri = TaskTriangle();
 
     task = &tri;
-    ctx.show(task);
+    ctx->show(task);
 
     return 0;
 }

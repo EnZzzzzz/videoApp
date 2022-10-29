@@ -3,8 +3,11 @@
 #include "Window.h"
 #include "effectTasks/Task.h"
 
-void error_callback(int error, const char *description)
-{
+std::shared_ptr<Context> Context::MakeWindow(int w, int h, const char *name) {
+    return std::make_shared<Window>(w, h, name);
+}
+
+void error_callback(int error, const char *description) {
     puts(description);
 }
 
@@ -49,8 +52,7 @@ void Window::processInput(GLFWwindow *window) {
 }
 
 void Window::show(Task *task) {
-    for (int i = 0; i < task->frameCount; i++)
-//    while (!glfwWindowShouldClose(m_Window))
+    while (!glfwWindowShouldClose(m_Window))
     {
         processInput(m_Window);
         setFramebufferSizeCallback(m_Window, m_Width, m_Height);

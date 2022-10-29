@@ -1,7 +1,11 @@
 #include "glad/glad.h"
 #include "OffscreenCtx.h"
 
-OffscreenCtx::OffscreenCtx(int width, int height, const char *name) : m_Width(width), m_Height(height), m_FrameNum(0) {
+std::shared_ptr<Context> Context::MakeOffscreen(int w, int h) {
+    return std::make_shared<OffscreenCtx>(w, h);
+}
+
+OffscreenCtx::OffscreenCtx(int width, int height) : m_Width(width), m_Height(height), m_FrameNum(0) {
 
     ctx = OSMesaCreateContextExt(OSMESA_RGBA, 16, 0, 0, NULL);
     if (!ctx) {
@@ -23,7 +27,7 @@ OffscreenCtx::OffscreenCtx(int width, int height, const char *name) : m_Width(wi
     std::cout <<"OpenGL context created, GL version: "<< glGetString(GL_VERSION) << std::endl;
 }
 
-void OffscreenCtx::show(Task *&currentTask) {
+void OffscreenCtx::show(Task *currentTask) {
     for (int cnt = 0; cnt < currentTask->frameCount; cnt++) {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

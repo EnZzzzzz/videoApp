@@ -1,6 +1,6 @@
 #include "TestClearColor.h"
 #include "glad/glad.h"
-
+#include "imgui/imgui.h"
 
 
 TestClearColor::TestClearColor()
@@ -24,5 +24,5 @@ void TestClearColor::OnRender()
 
 void TestClearColor::OnImGuiRender()
 {
-
+	ImGui::ColorEdit4("ClearColor", m_ClearColor);
 }

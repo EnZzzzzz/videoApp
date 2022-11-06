@@ -3,14 +3,15 @@
 
 int main()
 {
-    int w = 630;
-    int h = 360;
+    int w = 1000;
+    int h = 800;
     auto ctx = Context::MakeWindow(w, h, "test");
 
+    TaskMenu taskMenu = TaskMenu();
+    taskMenu.RegisterTest<TaskTriangle>("TestTriangle");
     Task* task;
-    TaskTriangle tri = TaskTriangle();
 
-    task = &tri;
+    task = &taskMenu;
     ctx->show(task);
 
     return 0;

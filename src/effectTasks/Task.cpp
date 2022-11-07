@@ -29,6 +29,7 @@ void TaskMenu::OnImGuiRender()
 		m_CurrentTest = this;
 	}
 	else {
+        // 此时的current test 是实际运行的子类
 		m_CurrentTest->OnImGuiRender();
 	}
 }
@@ -37,4 +38,12 @@ void TaskMenu::OnRender()
 {
 	if (m_CurrentTest != this)
 		m_CurrentTest->OnRender();
+}
+
+void TaskMenu::ProcessInput(GLFWwindow *window) {
+    if (m_CurrentTest != this) {
+        m_CurrentTest->ProcessInput(window);
+    } else {
+        Task::ProcessInput(window);
+    }
 }

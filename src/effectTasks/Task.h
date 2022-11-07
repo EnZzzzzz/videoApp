@@ -42,6 +42,8 @@ public:
 
     void OnRender() override;
 
+    void ProcessInput(GLFWwindow* window) override;
+
     template<typename T>
     void RegisterTest(const std::string &name) {
         std::cout << "Register test: " << name << std::endl;

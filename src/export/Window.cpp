@@ -63,7 +63,6 @@ void Window::processInput(GLFWwindow *window) {
 void Window::show(Task *task) {
     while (!glfwWindowShouldClose(m_Window))
     {
-        processInput(m_Window);
         setFramebufferSizeCallback(m_Window, m_Width, m_Height);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -73,6 +72,7 @@ void Window::show(Task *task) {
         ImGui::NewFrame();
 
         if (task) {
+            task->ProcessInput(m_Window);
             task->OnUpdate(0.0f);
             task->OnRender();
             ImGui::Begin("Task");

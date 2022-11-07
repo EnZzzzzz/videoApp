@@ -11,6 +11,7 @@ set(FILES "")          # 项目中的文件
 
 list(APPEND INCLUDE_DIRS src)
 list(APPEND INCLUDE_DIRS src/vendors)
+list(APPEND INCLUDE_DIRS src/glElement)
 list(APPEND INCLUDE_DIRS Denpendiencies)
 list(APPEND LINK_DIRS    Denpendiencies/GLFW)
 
@@ -45,7 +46,7 @@ list(APPEND LINK_LIBS dl)
 list(APPEND LINK_LIBS m)
 
 
-set(forAdd src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp ${glElement} src/export/Context.h src/export/Context.h src/export/Context.h src/effectTasks/LOG28Framebuffer1.cpp src/effectTasks/LOG28Framebuffer1.h)
+set(forAdd src/effectTasks/OG7Camera2.cpp src/effectTasks/TaskTriangle.cpp src/effectTasks/TaskTriangle.h src/vendors/stb_image/stb_image_write.cpp ${glElement} src/export/Context.h src/export/Context.h src/export/Context.h src/effectTasks/LOG28Framebuffer1.cpp src/effectTasks/LOG28Framebuffer1.h)
 
 include_directories(${INCLUDE_DIRS})
 link_directories(${LINK_DIRS})
